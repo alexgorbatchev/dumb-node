@@ -1,0 +1,6 @@
+#!/bin/bash
+docker build -t agorbatchev/dumb-node .
+id=$(docker images -q "agorbatchev/dumb-node")
+docker tag $id agorbatchev/dumb-node:6.2.0
+docker run -it --rm agorbatchev/dumb-node node -v
+
