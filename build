@@ -1,4 +1,4 @@
 #!/bin/bash -ex
-docker build -t agorbatchev/dumb-node:7.7.3 -t agorbatchev/dumb-node:latest .
+docker build -t agorbatchev/dumb-node:7.7.3 -t agorbatchev/dumb-node:latest -t agorbatchev/dumb-node .
 docker run -it --rm agorbatchev/dumb-node:latest node -v
 docker images | grep "agorbatchev/dumb-node"
