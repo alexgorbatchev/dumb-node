@@ -1,5 +1,4 @@
-#!/bin/bash
-docker build -t agorbatchev/dumb-node .
-id=$(docker images -q "agorbatchev/dumb-node")
-docker tag $id agorbatchev/dumb-node:7.7.3
-docker run -it --rm agorbatchev/dumb-node node -v
+#!/bin/bash -ex
+docker build -t agorbatchev/dumb-node:7.7.3 -t agorbatchev/dumb-node:latest .
+docker run -it --rm agorbatchev/dumb-node:latest node -v
+docker images | grep "agorbatchev/dumb-node"
