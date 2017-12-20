@@ -1,4 +1,18 @@
-#!/bin/bash -ex
-docker build -t agorbatchev/dumb-node:8.5.0 -t agorbatchev/dumb-node:latest -t agorbatchev/dumb-node .
+#!/bin/bash
+
+VERSION="9.3.0"
+
+sed "s/VERSION/$VERSION/" Dockerfile.template > Dockerfile
+
+echo "🛠  Building..."
+docker build -t agorbatchev/dumb-node:$VERSION -t agorbatchev/dumb-node:latest -t agorbatchev/dumb-node . > /dev/null
+
+echo "✋  Testing..."
 docker run -it --rm agorbatchev/dumb-node:latest node -v
+
+echo "👍  Results..."
 docker images | grep "agorbatchev/dumb-node"
+
+rm Dockerfile
+
+echo "👌  Loook ok? Now run ./push"
